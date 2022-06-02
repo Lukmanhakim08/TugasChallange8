@@ -60,19 +60,19 @@ fun ListFilm(film: Film) {
                     .padding(10.dp)
             ) {
                 Text(
-                    text = "Judul: \n${film.judul}",
+                    text = "Judul Film: \n${film.judul}",
                     color = Color.Black,
                     fontWeight = FontWeight.Normal,
                     modifier = Modifier.padding(bottom = 10.dp)
                 )
                 Text(
-                    text = "Sutradara: \n${film.sutradara}",
+                    text = "Nama Sutradara: \n${film.sutradara}",
                     color = Color.Black,
                     fontWeight = FontWeight.Normal,
                     modifier = Modifier.padding(bottom = 10.dp)
                 )
                 Text(
-                    text = "Description: \n${film.deskripsi}",
+                    text = "Description Film: \n${film.deskripsi}",
                     color = Color.Black,
                     fontWeight = FontWeight.Normal
                 )
