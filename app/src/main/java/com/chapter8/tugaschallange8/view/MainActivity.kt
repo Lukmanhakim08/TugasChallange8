@@ -5,8 +5,6 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -18,15 +16,13 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.chapter8.tugaschallange8.Film
-import com.chapter8.tugaschallange8.FilmRepository
 import com.chapter8.tugaschallange8.ui.theme.TugasChallange8Theme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val dataFilm = FilmRepository().getAllFilm()
+//        val dataFilm = FilmRepository().getAllFilm()
 
         setContent {
             TugasChallange8Theme {
@@ -35,11 +31,12 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    LazyColumn{
-                        items(items = dataFilm){ item: Film ->
-                            ListFilm(film = item)
-                        }
-                    }
+                    ListFilm()
+//                    LazyColumn{
+//                        items(items = dataFilm){ item: Film ->
+//                            ListFilm(film = item)
+//                        }
+//                    }
                 }
             }
         }
@@ -47,7 +44,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun ListFilm(film: Film) {
+fun ListFilm() {
     Column(modifier = Modifier.padding(10.dp)) {
         Card(
             shape = RoundedCornerShape(10.dp),
@@ -62,19 +59,19 @@ fun ListFilm(film: Film) {
                     .padding(10.dp)
             ) {
                 Text(
-                    text = "Judul Film: \n${film.judul}",
+                    text = "Judul Film",
                     color = Color.Black,
                     fontWeight = FontWeight.Normal,
                     modifier = Modifier.padding(bottom = 10.dp)
                 )
                 Text(
-                    text = "Nama Sutradara: \n${film.sutradara}",
+                    text = "Nama Sutradara",
                     color = Color.Black,
                     fontWeight = FontWeight.Normal,
                     modifier = Modifier.padding(bottom = 10.dp)
                 )
                 Text(
-                    text = "Description Film: \n${film.deskripsi}",
+                    text = "Description Film",
                     color = Color.Black,
                     fontWeight = FontWeight.Normal
                 )
@@ -87,6 +84,6 @@ fun ListFilm(film: Film) {
 @Composable
 fun DefaultPreview() {
     TugasChallange8Theme {
-        ListFilm(film = Film(1, "ini adalah judul FIlm", "Lukman Hakim", "ini adalah deskripsi film"))
+        ListFilm()
     }
 }

@@ -17,7 +17,7 @@ import javax.inject.Singleton
 object AppModule {
     //base URL user API
     private const val BASE_URL = "https://api.themoviedb.org/3/"
-    private const val BASE_URL1 = "https://6254434c19bc53e2347b93f1.mockapi.io/"
+    private const val BASE_URL1 = "https://6254436219bc53e2347b9583.mockapi.io/"
 
     private val logging: HttpLoggingInterceptor
         get() {
@@ -28,15 +28,25 @@ object AppModule {
         }
     private val client = OkHttpClient.Builder().addInterceptor(logging).build()
 
+    //retrofit and api services module for film
     @Provides
     @Singleton
-    fun provideApiService(retrofit: Retrofit): ApiService =
+    fun provideRetrofit(): Retrofit = Retrofit
+        .Builder()
+        .baseUrl(BASE_URL)
+        .addConverterFactory(GsonConverterFactory.create())
+        .client(client)
+        .build()
+
+    @Provides
+    @Singleton
+    fun provideApiServices(retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
 
     @Provides
     @Singleton
     @Named("RetrofitUser")
-    fun provideRetrofitApiUser(): Retrofit = Retrofit
+    fun provideRetrofitForUserApi(): Retrofit = Retrofit
         .Builder()
         .baseUrl(BASE_URL1)
         .addConverterFactory(GsonConverterFactory.create())
@@ -46,6 +56,6 @@ object AppModule {
     @Provides
     @Singleton
     @Named("ApiServiceUser")
-    fun provideUserApiService(@Named("RetrofitUser") retrofit: Retrofit): ApiService =
+    fun provideApiServicesForUser(@Named("RetrofitUser") retrofit: Retrofit): ApiService =
         retrofit.create(ApiService::class.java)
 }

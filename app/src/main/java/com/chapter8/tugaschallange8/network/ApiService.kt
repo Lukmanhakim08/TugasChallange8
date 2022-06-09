@@ -17,10 +17,10 @@ interface ApiService {
     ): Call<DataMovieResponse>
 
     //user
-    @GET("datauserlogin")
+    @GET("user")
     suspend fun getAllUser() : List<DataUserResponseItem>
 
-    @POST("datauserlogin")
+    @POST("user")
     fun addNewUser(@Body requestUser: RequestUser) : Call<PostUser>
 
 }
