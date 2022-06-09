@@ -62,7 +62,7 @@ class MainActivity : ComponentActivity() {
 
                     Column(
                         modifier = Modifier
-                            .padding(10.dp)
+                            .padding(20.dp)
                             .fillMaxSize()
                     ) {
                         Row(

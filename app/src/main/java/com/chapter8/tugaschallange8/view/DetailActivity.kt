@@ -32,7 +32,7 @@ class DetailActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colors.background
                 ) {
-                    val movie = intent.getParcelableExtra<Movie>("DATAMOVIE")!!
+                    val movie = intent.getParcelableExtra<Movie>("DATAMOVIEW")!!
                     Detailmovie(movie = movie)
                 }
             }
@@ -60,31 +60,40 @@ fun Detailmovie(movie: Movie) {
                     .width(100.dp)
                     .height(100.dp)
                     .align(Alignment.CenterHorizontally)
+                    .padding(15.dp)
             )
 
             Text(
                 text = movie.title,
                 color = Color.Black,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(bottom = 10.dp)
+                modifier = Modifier
+                    .padding(bottom = 10.dp)
+                    .align(Alignment.CenterHorizontally)
             )
             Text(
                 text = "Release date: \n${movie.releaseDate}",
                 color = Color.Black,
                 fontWeight = FontWeight.Normal,
-                modifier = Modifier.padding(bottom = 10.dp)
+                modifier = Modifier
+                    .padding(bottom = 10.dp)
+                    .align(Alignment.CenterHorizontally)
             )
             Text(
                 text = "${movie.voteAverage}",
                 color = Color.Black,
                 fontWeight = FontWeight.Normal,
-                modifier = Modifier.padding(bottom = 10.dp)
+                modifier = Modifier
+                    .padding(bottom = 10.dp)
+                    .align(Alignment.CenterHorizontally)
             )
             Text(
                 text = movie.overview,
                 color = Color.Black,
                 fontWeight = FontWeight.Normal,
-                modifier = Modifier.padding(bottom = 10.dp),
+                modifier = Modifier
+                    .padding(bottom = 10.dp)
+                    .align(Alignment.CenterHorizontally),
                 textAlign = TextAlign.Justify
             )
         }
