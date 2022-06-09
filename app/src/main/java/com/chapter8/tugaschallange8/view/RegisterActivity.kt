@@ -1,4 +1,4 @@
-package com.chapter8.tugaschallange8
+package com.chapter8.tugaschallange8.view
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,6 +15,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.chapter8.tugaschallange8.R
 import com.chapter8.tugaschallange8.ui.theme.TugasChallange8Theme
 
 class RegisterActivity : ComponentActivity() {

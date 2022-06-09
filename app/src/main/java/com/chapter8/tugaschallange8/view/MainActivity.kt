@@ -1,4 +1,4 @@
-package com.chapter8.tugaschallange8
+package com.chapter8.tugaschallange8.view
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -18,6 +18,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.chapter8.tugaschallange8.Film
+import com.chapter8.tugaschallange8.FilmRepository
 import com.chapter8.tugaschallange8.ui.theme.TugasChallange8Theme
 
 class MainActivity : ComponentActivity() {
