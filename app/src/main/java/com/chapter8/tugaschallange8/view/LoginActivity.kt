@@ -50,6 +50,8 @@ class LoginActivity : ComponentActivity() {
                     loginManagerUser.boolean.asLiveData().observe(this){
                         if (it == true){
                             mContext.startActivity(Intent(mContext, MainActivity::class.java))
+                        }else{
+                            Toast.makeText(mContext, "Email/password tidak sesuai", Toast.LENGTH_SHORT).show()
                         }
                     }
                     LoginUserInterface()
@@ -85,7 +87,10 @@ fun LoginUserInterface() {
         Image(
             painter = painterResource(id = R.drawable.logo_splash),
             contentDescription = "img",
-            modifier = Modifier.padding(bottom = 20.dp)
+            modifier = Modifier
+                .padding(bottom = 20.dp)
+                .width(100.dp)
+                .height(100.dp)
         )
         TextField(
             value = email,

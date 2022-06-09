@@ -1,14 +1,11 @@
 package com.chapter8.tugaschallange8.view
 
-import android.app.DatePickerDialog
 import android.content.Intent
 import android.os.Bundle
-import android.widget.DatePicker
 import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.text.KeyboardOptions
@@ -21,7 +18,6 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.input.KeyboardType
@@ -29,14 +25,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.chapter8.tugaschallange8.R
 import com.chapter8.tugaschallange8.model.RequestUser
 import com.chapter8.tugaschallange8.ui.theme.TugasChallange8Theme
 import com.chapter8.tugaschallange8.viewmodel.ViewModelUser
 import dagger.hilt.android.AndroidEntryPoint
-import java.util.*
 
 @AndroidEntryPoint
 class RegisterActivity : ComponentActivity() {
@@ -59,18 +53,7 @@ class RegisterActivity : ComponentActivity() {
 @Composable
 fun RegisterUserInterface() {
     val mContext = LocalContext.current
-    val mDay: Int
-    val mYear: Int
-    val mMonth: Int
-    val mCalendar = Calendar.getInstance()
     val userViewModel = viewModel(modelClass = ViewModelUser::class.java)
-
-    //current year
-    mYear = mCalendar.get(Calendar.YEAR)
-    mMonth = mCalendar.get(Calendar.MONTH)
-    mDay = mCalendar.get(Calendar.DAY_OF_MONTH)
-    mCalendar.time = Date()
-
     Column(
         modifier = Modifier
             .fillMaxWidth()
@@ -105,18 +88,14 @@ fun RegisterUserInterface() {
         var alamat by remember {
             mutableStateOf("")
         }
-        val mDatePickerDialog = DatePickerDialog(
-            mContext,
-            { _: DatePicker, mYear: Int, mMonth: Int, mDayOfMonth: Int ->
-                tanggalLahir = "$mDayOfMonth/${mMonth + 1}/$mYear"
-            }, mYear, mMonth, mDay
-        )
         Image(
             painter = painterResource(id = R.drawable.logo_splash),
             contentDescription = "img",
             modifier = Modifier
                 .padding(bottom = 20.dp)
                 .align(Alignment.CenterHorizontally)
+                .width(150.dp)
+                .height(150.dp)
         )
         TextField(
             value = name,
@@ -134,14 +113,6 @@ fun RegisterUserInterface() {
                 .fillMaxWidth()
                 .padding(bottom = 15.dp)
         )
-        Text(
-            text = "Tanggal lahir(dd/mm/yy):  $tanggalLahir",
-            fontSize = 20.sp,
-            modifier = Modifier.background(color = Color.Gray)
-        )
-        Button(onClick = { mDatePickerDialog.show() }) {
-            Text(text = "Pilih tanggal lahir")
-        }
         TextField(
             value = username,
             onValueChange = {username = it},

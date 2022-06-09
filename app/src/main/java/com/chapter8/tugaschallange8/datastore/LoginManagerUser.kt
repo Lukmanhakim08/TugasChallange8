@@ -43,7 +43,7 @@ class LoginManagerUser(context: Context) {
         }
     }
 
-    suspend fun clearDataLogin() {
+    suspend fun logoutLogin() {
         dataStore.edit {
             it.clear()
         }
